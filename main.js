@@ -1,10 +1,6 @@
-// const rps = ["rock", "paper", "scissors"];
 // rock = 0
 // paper = 1
 // scissors = 2
-
-let humanScore = 0;
-let comScore = 0;
 
 const getComputerChoice = () => {
   let choice = Math.floor(Math.random() * 3);
@@ -32,31 +28,47 @@ const getUserChoice = () => {
   let userChoice = prompt("Rock, Paper, Scissors!");
   let user = userChoice.toLowerCase();
   console.log("Your choice is " + user);
+  switch (user) {
+    case "rock":
+      return (user = 0);
+      break;
+    case "paper":
+      return (user = 1);
+      break;
+    case "scissors":
+      return (user = 2);
+      break;
+    default:
+      try {
+        console.log("No return value");
+      } catch (e) {
+        console.error(e);
+      }
+  }
   return user, userChoice;
 };
 
-// const playRound = (humanChoice, comChoice) => {
-//   if (humanChoice === "rock" && comChoice === 2) {
-//     console.log("Your choice", humanChoice);
-//     console.log("Enemy choice scissors");
-//     console.log("You win");
-//   } else if (humanChoice === "scissors" && comChoice === 1) {
-//     console.log("Your choice", humanChoice);
-//     console.log("Enemy choice rock");
-//     console.log("You win");
-//   } else if (humanChoice === "paper" && comChoice === 0) {
-//     console.log("Your choice", humanChoice);
-//     console.log("Enemy choice paper");
-//     console.log("You win");
-//   } else {
-//     if()
-//     console.log("Your choice", humanChoice);
-//     console.log("Enemy choice", comChoice);
-//     console.log("You lose");
-//   }
-// };
 const humanSelection = getUserChoice();
-const comSelection = getComputerChoice();
-// console.log(getUserChoice());
-// console.log(getComputerChoice());
-// console.log(playRound(humanSelection, comSelection));
+const compSelection = getComputerChoice();
+let humanScore = 0;
+let comScore = 0;
+
+function playRound(humanSelection, compSelection) {
+  if (humanSelection === compSelection) {
+    console.log("Tie!");
+  } else if (
+    (humanSelection == 0 && compSelection == 2) ||
+    (humanSelection == 2 && compSelection == 1) ||
+    (humanSelection == 1 && compSelection == 0)
+  ) {
+    console.log("You win");
+  } else {
+    console.log("You Lose");
+  }
+}
+
+function playGame() {
+  playRound(humanSelection, compSelection);
+}
+
+playGame();
