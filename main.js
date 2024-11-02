@@ -61,14 +61,26 @@ function playRound(humanSelection, compSelection) {
     (humanSelection == 2 && compSelection == 1) ||
     (humanSelection == 1 && compSelection == 0)
   ) {
+    humanScore += 1;
     console.log("You win");
   } else {
+    comScore += 1;
     console.log("You Lose");
   }
 }
 
 function playGame() {
-  playRound(humanSelection, compSelection);
+  for (let round = 1; round <= 5; round++) {
+    console.log(`Round ${round} start!`);
+    const humanSelection = getUserChoice();
+    const compSelection = getComputerChoice();
+    playRound(humanSelection, compSelection);
+    console.log(`Your score: ${humanScore} || Enemy score: ${comScore}`);
+    console.log(`-------------------------------------------------`);
+  }
+  console.log(
+    `FINAL SCORE || Your score: ${humanScore} || Enemy score: ${comScore}`,
+  );
 }
 
 playGame();
