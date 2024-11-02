@@ -10,13 +10,13 @@ const getComputerChoice = () => {
   let choice = Math.floor(Math.random() * 3);
   switch (choice) {
     case 0:
-      console.log("rock");
+      console.log("Enemy choose rock");
       break;
     case 1:
-      console.log("paper");
+      console.log("Enemy choose paper");
       break;
     case 2:
-      console.log("scissors");
+      console.log("Enemy choose scissors");
       break;
     default:
       try {
@@ -30,7 +30,9 @@ const getComputerChoice = () => {
 
 const getUserChoice = () => {
   let userChoice = prompt("Rock, Paper, Scissors!");
-  return userChoice;
+  let user = userChoice.toLowerCase();
+  console.log("Your choice is " + user);
+  return user, userChoice;
 };
 
 // const playRound = (humanChoice, comChoice) => {
@@ -56,5 +58,5 @@ const getUserChoice = () => {
 const humanSelection = getUserChoice();
 const comSelection = getComputerChoice();
 // console.log(getUserChoice());
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
 // console.log(playRound(humanSelection, comSelection));
